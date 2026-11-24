@@ -7,6 +7,14 @@ const skills = [
   'GitHub Actions & GitLab CI',
   'Prometheus & Grafana',
 ]
+const projects = [
+  {
+    title: 'Dockerized Monitoring Stack',
+    description: 'A local Prometheus and Grafana stack for monitoring containerized services.',
+    stack: ['Docker', 'Prometheus', 'Grafana'],
+    url: 'https://github.com/dyldug',
+  },
+]
 </script>
 
 <template>
@@ -32,9 +40,15 @@ const skills = [
 
     <section>
       <h2>Projects</h2>
-      <article class="project">
-        <h3>Coming soon</h3>
-        <p>My DevOps projects will live here.</p>
+      <article v-for="project in projects" :key="project.title" class="project">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+
+        <p class="stack">{{ project.stack.join(' · ') }}</p>
+
+        <a :href="project.url" target="_blank" rel="noreferrer">
+          View project
+        </a>
       </article>
     </section>
   </main>
